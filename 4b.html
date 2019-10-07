@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mass Lottery</title>
+<body>
+  <h2> Joe's Hotdog Stand</h2>
+  <input type = "interger" id="#hotdogs" value = "number of hotdogs">
+  <input type = "interger" id="#fries" value = "number of fries">
+  <input type = "interger" id="#drinks" value = "number of drinks">
+  <button onclick="calculate()">Order</button>
+
+<script language="javascript" type="text/javascript">
+var itemprice = {};
+itemprice["hotdog"] = 3.25;
+itemprice["fries"] = 2.00;
+itemprice["drinks"] = 1.50;
+
+var itemquantity = {};
+itemquantity["hotdog"] = 0;
+itemquantity["fries"] = 0;
+itemquantity["drinks"] = 0;
+
+
+
+function calculate() {
+  itemquantity["hotdog"] = document.getElementById("#hotdogs").value;
+  itemquantity["fries"] = document.getElementById("#fries").value;
+  itemquantity["drinks"] = document.getElementById("#drinks").value;
+  var pricehotdogs = itemquantity["hotdog"] * itemprice["hotdog"];
+  var pricefries = itemquantity["fries"] * itemprice["fries"];
+  var pricedrinks = itemquantity["drinks"] * itemprice["drinks"];
+  var sum = pricehotdogs + pricefries + pricedrinks ;
+  if (sum >= 20) {
+    var discount = sum * .1
+  }
+  var masstax = (sum * .0625);
+  var total = (sum + masstax);
+
+  document.write ("number of hotdogs: " + itemquantity["hotdog"] + " <br>");
+  document.write ("number of fries: "+ itemquantity["fries"] + " <br>");
+  document.write("number of drinks: " + itemquantity["drinks"] + " <br>");
+  document.write("subtotal is: " + sum + " <br>");
+  if (discount > 0) {
+    document.write("discount is: " + discount + "<br>");
+   }
+  document.write ("tax is: " + masstax + " <br>");
+  document.write ("total is: " + total + " <br>");
+
+
+
+}
+
+
+
+</script>
+</body>
+</html>

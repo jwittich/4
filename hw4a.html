@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mass Lottery</title>
+<body>
+  <h2> Lottery Drawings</h2>
+<script language="javascript" type="text/javascript">
+var nums = [];
+var lucky;
+
+for (var i = 0; i <5; i++) {
+  nums.push(Math.round(Math.random()* 47 + 1));
+  }
+  lucky = Math.round(Math.random()* 17 + 1);
+  nums.push(lucky);
+  nums.forEach(function(num) {
+    if (num == lucky) {
+      document.write ("lucky number is: " +  num + "<br>");
+    }
+    else {
+    document.write ("lottery number is: " +  num + "<br>");
+  }
+  })
+nums.sort(function(a, b) {return a - b});
+document.write ("<br>" + "Here are your lottery numbers sorted." + "<br>");
+nums.forEach(function(num) {
+  document.write (num + "<br>");
+  })
+
+</script>
+<input type="string" id="lottery"value="lottery numbers">
+<input type="interger" id="lucky" value="lucky ball number">
+<button onclick="compare()">Check my payout</button>
+
+<script>
+function compare() {
+  var lottery = document.getElementById("lottery").value;
+  var luckynum = document.getElementById("lucky").value;
+  //if (separate[1] == nums[1] || separate[1] == nums[2])
+  //var split = "lottery";
+  var lotarray = lottery.split(" ").map(function(item) {
+    return parseInt(item, 10);
+  });
+
+  //count number of matches
+    // TODO - duplicate problem
+  var matches = 0;
+  for (var i = 0; i < nums.length; i++) {
+    if(lotarray.includes(nums[i])) {
+      matches = matches + 1;
+    }
+
+  }
+  if (matches == 0 && luckynum == lucky){
+    document.write ("<br>" + "You won $4" + "<br>");}
+  else if (matches == 1 && luckynum == lucky){
+    document.write ("<br>" + "You won $6" + "<br>");}
+  else if (matches == 2 && luckynum != lucky){
+    document.write ("<br>" + "You won $3" + "<br>");}
+  else if (matches == 2 && luckynum == lucky){
+    document.write ("<br>" + "You won $25" + "<br>");}
+  else if (matches == 3 && luckynum != lucky){
+    document.write ("<br>" + "You won $20" + "<br>");}
+  else if (matches == 3 && luckynum == lucky){
+    document.write ("<br>" + "You won $150" + "<br>");}
+  else if (matches == 4 && luckynum != lucky){
+    document.write ("<br>" + "You won $200" + "<br>");}
+  else if (matches == 4 && luckynum == lucky){
+    document.write ("<br>" + "You won $5,000" + "<br>");}
+  else if (matches == 5 && luckynum != lucky){
+    document.write ("<br>" + "You won $25,000 a Year for Life!" + "<br>");}
+  else if (matches == 5 && luckynum == lucky){
+    document.write ("<br>" + "You won $7,000 a Week for Life!" + "<br>");}
+  else {
+      document.write ("<br>" + "You didn't win, try again." + "<br>");}
+  console.log(matches);
+
+  }
+
+
+
+
+
+//function addTo() {
+   //lotteryarray.push(document.getElementById("lottery").value);
+   //console.log(lotteryarray); //to confirm it has been added to the array
+//}
+</script>
+</body>
+</html>
